@@ -17,10 +17,12 @@ assert.lengthOf(tea.flavors, 3);
 class Assert {
 
     fun match(actual:String, expected:String):Boolean {
-        return actual.equals(expected)
+        Expectation.result = actual.equals(expected)
+        return Expectation.result;
     }
 
     fun equal(actual:Any, expected:Any):Boolean {
-        return actual.equals(expected)
+        Expectation.result = actual.equals(expected)
+        return Expectation.result;
     }
 }

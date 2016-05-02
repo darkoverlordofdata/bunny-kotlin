@@ -19,9 +19,9 @@ package com.darkoverlordofdata.bunny
  *    Copyright 2016 Bruce Davidson
  */
 
-open class Bunny {
+open class Bunny(logo:Boolean=true) {
     val LOGO = """
-bunny test suite v0.0.2
+bunny test suite $Version
       /\ /\
       \/_\/
       ('.')
@@ -29,6 +29,7 @@ bunny test suite v0.0.2
 It's no ordinary rabbit
 
 """
+    var logo = logo
     var passed = 0
     var failed = 0
     var name = ""
@@ -36,7 +37,7 @@ It's no ordinary rabbit
     val tests:MutableList<Test> = mutableListOf()
 
     init {
-        println(LOGO)
+        if (logo) println(LOGO)
     }
 
     val assert: Assert by lazy { Assert() }
@@ -61,10 +62,10 @@ It's no ordinary rabbit
             test.proc()
             if (Expectation.result) {
                 passed++
-                println("PASS <=> ${test.name}")
+                println("${Ansi.foreground(Color.GREEN)}PASS${Ansi.reset()} <=> ${test.name}")
             } else {
                 failed++
-                println("FAIL <=> ${test.name}")
+                println("${Ansi.foreground(Color.RED)}FAIL${Ansi.reset()} <=> ${test.name}")
             }
         }
         println("---------------------------------")

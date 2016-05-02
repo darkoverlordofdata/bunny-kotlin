@@ -2,13 +2,10 @@ package com.darkoverlordofdata.test
 
 import com.darkoverlordofdata.bunny.Bunny
 
-fun main(args: Array<String>) {
-    MyTest().run()
-}
-class MyTest : Bunny() {
+class MyTest() : Bunny() {
     init {
 
-        describe("this is a test")
+        describe("Bunny Unit Tests")
 
         test("Smoke Test Bunny::expect")
         {
@@ -17,7 +14,7 @@ class MyTest : Bunny() {
 
         test("Smoke Test Bunny::assert")
         {
-            assert.equal(0, 1 - 1)
+            assert.equal(1, 0)
         }
 
 
