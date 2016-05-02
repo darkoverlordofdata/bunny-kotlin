@@ -20,6 +20,10 @@
      *     Copyright 2016 Bruce Davidson
      */
      
+     “Many human beings say that they enjoy the winter, but what they really enjoy is feeling proof against it.” 
+     ― Richard Adams, Watership Down
+     
+     
 # Why?
 because jUnit isn't fully compatible with kotlin - you must write your test in java.
 I don't do java.
@@ -71,3 +75,5 @@ class MyTest : Bunny() {
     
     
     Process finished with exit code 0
+
+
