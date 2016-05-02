@@ -52,6 +52,8 @@ It's no ordinary rabbit
         tests.add(Test(name, proc))
     }
 
+    open fun start(){}
+    open fun end(){}
     fun run() {
         passed = 0
         failed = 0
@@ -59,7 +61,9 @@ It's no ordinary rabbit
         println("\t$name\n---------------------------------")
         for (test in tests) {
             Expectation.result = true
+            start()
             test.proc()
+            end()
             if (Expectation.result) {
                 passed++
                 println("${Ansi.foreground(Color.GREEN)}PASS${Ansi.reset()} <=> ${test.name}")
