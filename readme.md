@@ -28,7 +28,7 @@
 because jUnit isn't fully compatible with kotlin - you must write your test in java.
 I don't do java.
 
-'''kotlin
+```kotlin
 class MyTest : Bunny() {
     init {
 
@@ -53,7 +53,7 @@ class MyTest : Bunny() {
 
     }
 }
-'''
+```
 
     bunny test suite v0.0.2
           /\ /\
