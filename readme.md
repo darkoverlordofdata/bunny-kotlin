@@ -28,29 +28,54 @@
 because jUnit isn't fully compatible with kotlin - you must write your test in java.
 I don't do java.
 
+### Functional
 ```kotlin
-class MyTest : Bunny() {
+
+    var k1 = 0
+    var k2 = 0
+    var k3 = 0
+
+    TestIt("this is the test suite")
+    .beforeEach {
+        k1 += 1
+    }.afterEach {
+        k2 += 1
+    }.onDone {
+        k3 = k1 + k2
+    }.run {
+
+        it("this is the test") {
+            it.equals(1, 1)
+        }
+
+        it("this is another test") {
+            it.equals("fred", 1)
+        }
+
+    }
+```
+
+### OOP
+```kotlin
+class MyTest : UnitTest("This is the test") {
+
     init {
 
-        describe("this is a test")
+        var x = 0
 
-        test("Smoke Test Bunny::expect")
-        {
-            expect(10).to.equal(5+5)
+        beforeEach { x += 1 }
+
+        should("test1") {
+            assert.equal(0, 0)
         }
 
-        test("Smoke Test Bunny::assert")
-        {
-            assert.equal(0, 1 - 1)
+        should("test2") {
+            assert.equal(1, 0)
         }
 
-        test("ECS Test Matcher")
-        {
-            var m = Matcher.allOf(1, 2, 3)
-            //expect(m.toString()).to.equal("AllOf(Position,Movement,Resource)")
-            expect(m.toString()).to.equal("AllOf(1,2,3)")
+        done {
+            println("that's all $x")
         }
-
     }
 }
 ```
